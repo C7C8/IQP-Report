@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}                         % Make it an article
+\usepackage{indentfirst}                       % All paragraphs indented
+\usepackage{setspace}                           % For 1.5 spacing
+\usepackage[hidelinks]{hyperref}      % Make table of contents clickable
+\usepackage[margin=1in]{geometry} % 1 inch margin
+\usepackage[english]{babel}                     % For "fancy" quotes
+\usepackage[autostyle, english=american]{csquotes} % Same
+\usepackage{apacite}                            % Use APA citations
+\usepackage{etoolbox}                           % Misc
+\usepackage{titlesec}
+\usepackage{listofauthorships}
+\MakeOuterQuote{"}                              % For fancy quotes
+\usepackage{times}                              %For Tilde
+\usepackage{textcomp}                           %For Tilde
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{-3pt}
+
+\title{Eilat Transportation}
+\author{Evan Goldstein, Valeria Kopper, Christopher Myers, Zachary Zlotnick}
+\date{January 2018}
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\newpage
+
+\renewcommand\abstractname{Summary} % "Abstract" -> "Summary", the header lies
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\listofauthorships
+\newpage
+\pagenumbering{arabic}
+\doublespacing
+
+% Actual content begins here!
+
+% Bibliography -- automatically managed in APA style, on a new page
+\newpage
+\bibliographystyle{apacite}
+\bibliography{refs}
+
+\end{document}
