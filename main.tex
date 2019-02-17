@@ -1,37 +1,46 @@
-\documentclass[12pt]{article}                         % Make it an article
-\usepackage{indentfirst}                       % All subsections indented
-\usepackage{setspace}                           % For 1.5 spacing
-\usepackage[hidelinks]{hyperref}      % Make table of contents clickable
-\usepackage[margin=1in]{geometry} % 1 inch margin
-\usepackage[english]{babel}                     % For "fancy" quotes
-\usepackage[autostyle, english=american]{csquotes} % Same
-\usepackage{apacite}                            % Use APA citations
-\usepackage{etoolbox}                           % Misc
-\usepackage{titlesec}
-\usepackage{listofauthorships}
-\MakeOuterQuote{"}                              % For fancy quotes
-\usepackage{times}                              % For Tilde
-\usepackage{textcomp}                           % For Tilde
-\usepackage{graphicx}                           % Images
-\usepackage{array}                              % Table spacing
-\usepackage{ragged2e}
-\graphicspath{{./images/}}
+\documentclass[12pt]{article}                       % Make it an article
+\usepackage{indentfirst}                            % All subsections indented
+\usepackage{setspace}                               % For 1.5 spacing
+\usepackage{hyperref}                               % Make table of contents clickable, allow URLs
+\usepackage[margin=1in]{geometry}                   % 1 inch margin
+\usepackage[english]{babel}                         % For "fancy" quotes
+\usepackage[autostyle, english=american]{csquotes}  % Same
+\usepackage{apacite}                                % Use APA citations
+\usepackage{etoolbox}                               % Misc
+\usepackage{titlesec}                               % Modify spacing
+\usepackage{listofauthorships}                      % CUSTOM BUILT! Adds a table of authorships
+\MakeOuterQuote{"}                                  % For fancy quotes
+\usepackage{times}                                  % For tilde
+\usepackage{textcomp}                               % For tilde
+\usepackage{graphicx}                               % Images
+\usepackage{array}                                  % Table spacing
+\usepackage{ragged2e}                               % Left align table text
+\usepackage{float}                                  % Image placement
+
+% Document-level options
+\hypersetup{colorlinks=true,
+            urlcolor=blue,
+            citecolor=black,
+            linkcolor=black}
 \titlespacing*{\section}{0pt}{0pt}{0pt}
 \titlespacing*{\paragraph}{12pt}{0pt}{6pt}
+\titlespacing*{\subsection}{0pt}{5pt}{-5pt}
 \titlespacing*{\subsubsection}{0pt}{5pt}{-3pt}
 
+% Set up document title info
 \title{Eilat: Transportation 2040}
-\author{Evan Goldstein, Valeria Kopper, Christopher Myers, Zachary Zlotnick}
+\author{Evan Goldstein, Valeria Kopper, Christopher Myers, Z.Z.otnick}
 \date{\today}
 
 \begin{document}
+
+% Title page
 \pagenumbering{gobble}
 \maketitle
-
 \vspace{12cm}
 \begin{minipage}{0.5\textwidth}
     \begin{flushleft} \large
-        \includegraphics[width=2.5cm]{eilat_logo.png} \\
+        \includegraphics[width=2.5cm]{images/eilat_logo.png} \\
         \textbf{Sponsored by:} \\
         A. Adamon, \\
         E. Toppel \\
@@ -41,7 +50,7 @@
 ~
 \begin{minipage}{0.4\textwidth}
     \begin{flushright} \large
-        \includegraphics[width=5.5cm]{WPI_logo.png} \\
+        \includegraphics[width=5.5cm]{images/WPI_logo.png} \\
         \vspace{0.7cm}
         \textbf{Submitted to:}\\
         Professor Bar-On
@@ -56,7 +65,7 @@
 \pagenumbering{roman}
 \tableofcontents
 \newpage
-\listofauthorships
+\listofauthorships\newpage
 \listoffigures
 \newpage
 \pagenumbering{arabic}
@@ -66,77 +75,140 @@
 \section{Introduction}[All]
 Eilat is a city in the southern tip of Israel with a growing population of ~50,000 and an area of 85 km$^2$. The city is a popular tourist destination, with over 3 million tourists per year from around the world. Given past trends, tourism is expected to continue increasing in the future. The city currently suffers from heavy congestion at peak hours, and the new Ramon airport on route 90 is expected to worsen the situation, increasing travel times. This compounded congestion will put a strain on Eilat's transport network, calling for an increased effort to shorten commute times, expand Eilat's transportation services, and streamline the travel experience. 
 
-Currently, Eilat’s public transport offerings are limited to taxis and intra-city buses operated by Egged. A bus ride from the west side of the city to the airport takes about 26 minutes with no traffic, and from Yotam Square to the Hotels zone is 35 minutes. These lengthy travel times are likely due to a high number of stops across a wide area. Strategically implemented policy changes, city restructuring, and connected technologies are proven to increase city efficiency.
+Currently, Eilat's public transport offerings are limited to taxis and intra-city buses operated by Egged. A bus ride from the west side of the city to the airport takes about 26 minutes with no traffic, and from Yotam Square to the Hotels zone is 35 minutes. These lengthy travel times are likely due to a high number of stops across a wide area. Strategically implemented policy changes, city restructuring, and connected technologies are proven to increase city efficiency.
 
-Eilat’s growing population and fluctuating tourism throughout the year have both placed strain on the existing transportation network, leading to heavy congestion. This project aimed to determine goals for Eilat’s future transportation services that have successfully tackled by making use of smart city technologies. We worked to identify the gap between these cities’ transportation network and Eilat’s, to assist in better designing and allocating mobility services throughout the city. As part of that work we created a roadmap to serve as a guide that includes a goal-oriented timeline, and an interactive website with maps and air traffic data to assist city planners and inform them on the results of our work.
+Eilat's growing population and fluctuating tourism throughout the year have both placed strain on the existing transportation network, leading to heavy congestion. This project aimed to determine goals for Eilat's future transportation services that have successfully tackled by making use of smart city technologies. We worked to identify the gap between these cities' transportation network and Eilat's, to assist in better designing and allocating mobility services throughout the city. As part of that work we created a roadmap to serve as a guide that includes a goal-oriented timeline, and an interactive website with maps and air traffic data to assist city planners and inform them on the results of our work.
  
 \newpage
-\section{Background}
+\section{Background --- Eilat's Current Situation }
+Despite Eilat's population of only 50,000, its situation is complicated by existing congestion typical to any city, the nature of the bus system, the influx 3,000,000 tourists every year, and the city's expansion plans for the future.
 
-\subsection{Existing Transportation}[Chris M., Zach Z.]
+\subsection{Existing Transportation}
+\subsubsection{Congestion}[C.M.]
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{eilat_traffic.png}
+    \includegraphics[scale=1]{images/eilat_traffic.png}
     \caption{Traffic map of Eilat at 5 PM weekdays (off-season)}
     \label{img:eilatTraffic}
 \end{figure}
 
-Israel's route 90 is the main road leading into Eilat, seen in the top right of figure \ref{img:eilatTraffic}, and is subject to heavy congestion during the tourism season, especially during peak hours. Red and orange roads indicate heavy and moderate congestion, respectively. During rush hours, congestion is moderate in most major city arteries even off-season. A notable hotspot is the Eilat airport (on the center right) which travelers frequently enter and exit. However, this airport is set to shut down as Ramon Airport opens later this year along route 90, and Ovda Airport (which feeds into route 12 on the far left) will stop handling civilian flights. This leaves Ramon airport as the only airport servicing Eilat, creating a focal point for congestion wherever route 90 meets with city roads. Given the already evident congestion, major traffic jams and increased travel times can be expected. 
+Israel's route 90 is the main road leading into Eilat, seen in the top right of figure \ref{img:eilatTraffic}, and is subject to heavy congestion during the tourism season, especially during peak hours. Red and orange roads indicate heavy and moderate congestion, respectively. During rush hours congestion is moderate in most major city arteries, even off-season. A notable hotspot is the Eilat airport (on the center right) which travelers frequently enter and exit. However, this airport is set to shut down as Ramon Airport opens later this year along route 90, and Ovda Airport (which feeds into route 12 on the far left) will stop handling civilian flights. This leaves Ramon airport as the only airport servicing Eilat, enhancing the already-present focal point for congestion wherever route 90 meets with city roads. Given current congestion, major traffic jams and long traffic times can only be expected to increase.
 
-\subsection{Tourism}[Joseph .]
+%expand
 
-Domestic tourism has larger impact on Israel’s tourism sector, accounting for 90\% of the bed nights spent in Eilat \cite{} With regard to the Ministry of Tourism’s spending, approximately 33\% of the budget is put toward marketing, 28\% is toward investment incentives, and 26\% for infrastructure investment. Israel’s most popular international markets include the United States, Russia, France, the UK, and Germany - accounting for nearly 50\% of the total number of tourists. In an attempt to draw more Europeans and Americans into Israel, the Open Skies Agreement in 2012 allowed direct flights to and from all EU countries. This agreement drove flight prices down and allowed more tourist flow to all parts of Israel. Within Eilat specifically, France and Russia as of 2015 represented the largest origin markets with a 42\% and 26\% claim respectively on international tourist arrivals, suggesting that this policy change increased potential tourism pull from the EU.
+\subsubsection{Bus System}[E.G.]
+%TODO
 
+\subsection{Tourism}
+\subsubsection{Statistics}[Z.Z.]
+Domestic tourism has larger impact on Israel's tourism sector, accounting for 90\% of the bed nights spent in Eilat \cite{Benner2017UpgradingEilat}. With regard to the Ministry of Tourism's spending, approximately 33\% of the budget is put toward marketing, 28\% is toward investment incentives, and 26\% for infrastructure investment \cite{Benner2017UpgradingEilat}. Israel's most popular international markets include the United States, Russia, France, the UK, and Germany - accounting for nearly 50\% of the total number of tourists. In an attempt to draw more Europeans and Americans into Israel, the Open Skies Agreement in 2012 allowed direct flights to and from all EU countries \cite{Benner2017UpgradingEilat}. This agreement drove flight prices down and allowed more tourist flow to all parts of Israel. Within Eilat specifically, France and Russia as of 2015 represented the largest origin markets with a 42\% and 26\% claim respectively on international tourist arrivals, suggesting that this policy change increased potential tourism pull from the EU. \cite{Benevolo2016SmartBenefits}.
 
+\subsubsection{Demographics and Behaviors}[V.K.]
 
-\subsection{Smart Cities}[Valeria K.?]
+In 2018 there were a total of 6,449.5 thousand overnight tourists, of which 5,776.5 were Israeli tourists (cite excel).  Out of the available occupation, such as hotel rooms 73.2\%, were used in 2018 which accounts for 11,023 occupied hotel rooms (cite excel).
 
-A smart city aims to ease the lives of its citizens by providing services as efficiently as possible. In order to do so they typically utilize innovative technologies that incorporate data analysis through the use of sensors and data collection. Cost, travel time, convenience, reliability, familiarity, weather, safety, environmental considerations, and existing infrastructure are factors that vary across cities and play a crucial role in understanding what citizens' needs and wants. Consequently, this information can then be used to determine which services should be prioritized. 
+Figure \ref{img:tourism_sources} shows the distribution of international versus domestic tourism in Eilat, with a clear majority of tourists being accounted for by Israelis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/tourism_distribution.jpg}
+    \caption{Pie chart of Eilat tourism sources}
+    \label{img:tourism_sources}
+\end{figure}
+Israeli overnight tourism from 2000 to 2018 is shown in figure \ref{img:israeli_overnight_tourism}. It shows an overall steady tread that has slightly increased over the years. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/israeli_overnight_tourism.jpg}
+    \caption{Israeli overnight tourism over time}
+    \label{img:israeli_overnight_tourism}
+\end{figure}
+International overnight tourism from 2000 to 2018 is displayed in figure\ref{img:international_overnight_tourism}, which clearly has varied much more throughout the years. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/international_overnight_tourism.jpeg}
+    \caption{International overnight tourism over time}
+    \label{img:international_overnight_tourism}
+\end{figure}
+
+\subsubsection{Popular attractions}[Z.Z.]
+Eilat's Red Sea beaches provide plenty of opportunity for tourists to explore through diving and snorkeling given its scenic coral reefs and underwater life \cite{Benner2017UpgradingEilat}. This is especially true for the underwater observatory which pulls people from all over and provides tours of the sharks, turtles, and rare fish (cite min of tourism). The musical fountain is a popular nighttime attraction for viewers who want to see a unique audiovisual show to pair with the view of the city behind it. Eilat also serves as a major shopping center because of it being a tax-free city with five shopping malls within a square kilometer. Two of the largest malls include the Hayam Mall and the Ice Park Mall \cite{Benner2017UpgradingEilat}. Interestingly, these sites tend to serve families with children best as there are plenty of attractions to serve all ages and demographics. This being said, Eilat is also tailored well toward the young adults who so choose to take advantage of the city's night life - consisting of many late-night restaurants, bars, and clubs.
+
+\subsection{Expansion and Zoning}[V.K., Z.Z.]
+
+Figure \ref{img:eilat_zoning} shows Eilat's current layout and how it is separated into various zones such as residential areas, industrial areas, commercial areas and tourist areas. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/eilat_zoning.jpg}
+    \caption{Map of Eilat zoning}
+    \label{img:eilat_zoning}
+\end{figure}
+Figure \ref{img:eilat_expansion} shows future expansion plans for the city.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/eilat_zoning_future.png}
+    \caption{Map of future Eilat expansion \& zoning}
+    \label{img:eilat_expansion}
+\end{figure}
+
+Eilat's future expansion plans mainly focuses on expanding the city significantly by adding residences, hotels, and even more tourist attractions - including a golf course to the north. These additions come at the expense of both the existing airport in the middle of Eilat, as well as currently unoccupied land toward the north and south-west. This should help the city enormously, as the Ovda Airport currently divides parts of the city and increases congestion toward the Hayam Mall and Boardwalk area.  This expansion would alleviate some of the congestion that can be seen at peak airport arrival hours when taxi services flood the area waiting to pick up wary travelers. That in mind, there exist other consequences of the moved airport in relation to needed transportation on the intra and inter-city scope. Such as residents commuting from futher distances to mostly the same industrial and tourist areas for job purposes. 
+
+\subsubsection{Ramon Airport}
+%TODO
+
+\newpage
+\section{Smart Cities}[V.K.]
+A smart city aims to ease the lives of its citizens by providing services as efficiently and conveniently as possible. In order to do so they typically utilize technologies that incorporate data analysis through the use of sensors and data collection. Cost, travel time, convenience, reliability, familiarity, weather, safety, environmental considerations, and existing infrastructure are factors that vary across cities and play a crucial role in understanding what citizens' needs and wants. Consequently, this information can then be used to determine which services should be prioritized. 
 
 Existing smart city plans typically first incorporate a basic infrastructure of sensors, cameras, and city-wide WiFi in order to establish a constant flow of data. This data can be used in strategic ways to resolve the issues that are too dynamic and intricate to change via technology-neutral methods. These tools are installed through the city and reflect traffic flow, available parking, pedestrian traffic, etc. This information can be used to improve traffic flow by adjusting public transportation and traffic lights to real time demand. 
 
 Successful smart cities across the world have several common factors, such as a strong commitment from government leaders that fosters the collaboration between the public sector and the private sector. Transparency, achieved by making collected data available to citizens, greatly increases confidence from citizens. Additionally, prioritizing continuous improvement is crucial due to rapidly changing technologies, since smart cities need to be constantly changing and adapting alongside them. 
 
-Smart mobility, or Mobility as a Service (MaaS), aims to cause a fundamental shift in the traveler’s mentality by incentivizing customers with a cheaper, faster, and more convenient mode of transportation in comparison to traditional privately-owned vehicles. These services are created with the customer in mind and are ultimately used to target issues associated with the saturation of private vehicles including traffic congestion, road accidents, insufficient parking, and greenhouse gas emissions.
+Smart mobility, or Mobility as a Service (MaaS), aims to cause a fundamental shift in the traveler's mentality by incentivizing customers with a cheaper, faster, and more convenient mode of transportation in comparison to traditional privately-owned vehicles. These services are created with the customer in mind and are ultimately used to target issues associated with the saturation of private vehicles including traffic congestion, road accidents, insufficient parking, and greenhouse gas emissions.
 
-% Not sure if this should be a section of its own or how we should organize this
-\section{Smart City Examples}
-\subsection{Curitiba, Brazil}[Author?]
-Curitiba is the capital of the state of Paraná in the south of Brazil. It has a population of about 1.8 million, making it Brazil’s 8th most populous city, and gets about two million tourists per year. During the 1970s there were a series of projects that focused on improving the city after it experienced incredibly rapid growth that led to overly congested streets. These were led by architect and three time mayor Jaime Lerner. The first project happened in 1972 and consisted of converting the main street in the center of the city to a pedestrian mall. The public objected to this, especially the shopkeepers, and in order to bypass this Lerner started construction a Friday evening after the courts had closed and made sure it was done within seventy-two hours. Public opinion rapidly shifted when they saw the benefits, instead requesting that the pedestrian zone be expanded. This was the beginning of an attitude change for all Curitiba, in terms of legislation and public opinion, that focused on bringing people together. Lerner adopted a philosophy of "act now, adjust later" as a means of avoiding Brazil’s bureaucracy in order to implement bold initiatives that would have likely been shut down or taken longer to carry out. Currently, 85\% of the population uses the bus system, given that it is the fastest and cheapest mode of transportation in the city. The incredibly efficient bus system known as Bus Rapid Transit (BRT) uses raised platforms and an electronic prepayment that allow for quicker stops, longer buses for a higher passenger capacity, and has five express bus avenues. The city has also made an effort to have large green areas and has a widely adopted recycling program. Due to its bold initiatives and successful implementation Curitiba is now recognized worldwide as a model for urban planning. 
+\subsection{Smart City Examples}
+\subsubsection{Curitiba, Brazil}[V.K.]
+Curitiba is the capital of the state of Paraná in the south of Brazil. It has a population of about 1.8 million, making it Brazil's 8th most populous city, and gets about two million tourists per year \cite{Adler2016StoryCapital}. During the 1970s there were a series of projects that focused on improving the city after it experienced incredibly rapid growth that led to overly congested streets. These were led by architect and three time mayor Jaime Lerner. The first project happened in 1972 and consisted of converting the main street in the center of the city to a pedestrian mall. The public objected to this, especially the shopkeepers, and in order to bypass this Lerner started construction a Friday evening after the courts had closed and made sure it was done within seventy-two hours. Public opinion rapidly shifted when they saw the benefits, instead requesting that the pedestrian zone be expanded. This was the beginning of an attitude change for all Curitiba, in terms of legislation and public opinion, that focused on bringing people together. Lerner adopted a philosophy of "act now, adjust later" as a means of avoiding Brazil's bureaucracy in order to implement bold initiatives that would have likely been shut down or taken longer to carry out. Currently, 85\% of the population uses the bus system, given that it is the fastest and cheapest mode of transportation in the city \cite{Adler2016StoryCapital}. The incredibly efficient bus system known as Bus Rapid Transit (BRT) uses raised platforms and an electronic prepayment that allow for quicker stops, longer buses for a higher passenger capacity, and has five express bus avenues. The city has also made an effort to have large green areas and has a widely adopted recycling program. Due to its bold initiatives and successful implementation Curitiba is now recognized worldwide as a model for urban planning. 
 
-\subsection{Freiburg, Germany}[Author?]
-Freiburg, a city of about 220,000, suffered significant damage during World War II bombings, which led to a redevelopment of the inner areas during the reconstruction period. The population at the time prioritized their energy consumption and city layout over their private vehicles, suggesting that a viable solution would focus on city access rather than mobility. Planners also decided to place emphasis on supporting a diversity of cheap and clean transportation modes and services to adapt to user needs. With other considerations such as air pollution caused by traffic influencing the reconstruction of the city centre, ideas to address these issues involved pedestrianizing the city centre further to reduce the amount of cars being allowed inside. This city centre would be a hotspot for tourists containing restaurants, shops, and plenty of green space. Parking was made available directly outside the centre at a fee, and parking within the centre would get progressively more expensive - alleviating congestion in a tiered fashion. Before doing this the city ensured there was an efficient tram system, which when combined seamlessly with the bus system, was able to bring travelers within 7 minutes of the outskirts of the city. Since users were generally accepting of physical activity like walking and biking, the city also made an effort to expand its biking network by placing bikes next to tram/bus stations with parking available for cars as well. From 1984 to 2006, people using public transit increased by 100\% and a modal shift occurred when 9\% of the total population ditched private cars for their everyday travel needs.  By 2020, Freiburg is projected to have 29\% of travelers using private vehicles, 20\% using public transit, 27\% cyclists, and 24\% pedestrians. By reducing the stress on any one form of transportation, it should contribute to a well-balanced city-wide network for all users. Figure \ref{img:freiburg_modal_split} reflects the current and projected usage of the transportation network in Freiburg.
+\subsubsection{Freiburg, Germany}[Z.Z.]
+Freiburg, a city of about 220,000, suffered significant damage during World War II bombings, which led to a redevelopment of the inner areas during the reconstruction period. The population at the time prioritized their energy consumption and city layout over their private vehicles, suggesting that a viable solution would focus on city access rather than mobility \cite{Rydningen2017OsloCentre}. Planners also decided to place emphasis on supporting a diversity of cheap and clean transportation modes and services to adapt to user needs \cite{Bindra2006SmartGermany}. With other considerations such as air pollution caused by traffic influencing the reconstruction of the city centre, ideas to address these issues involved pedestrianizing the city centre further to reduce the amount of cars being allowed inside. This city centre would be a hotspot for tourists containing restaurants, shops, and plenty of green space. Parking was made available directly outside the centre at a fee, and parking within the centre would get progressively more expensive - alleviating congestion in a tiered fashion\cite{Bindra2006SmartGermany}. Before doing this the city ensured there was an efficient tram system, which when combined seamlessly with the bus system, was able to bring travelers within 7 minutes of the outskirts of the city. Since users were generally accepting of physical activity like walking and biking, the city also made an effort to expand its biking network by placing bikes next to tram/bus stations with parking available for cars \cite{Bindra2006SmartGermany}. From 1984 to 2006, people using public transit increased by 100\% and a modal shift occurred when 9\% of the total population ditched private cars for their everyday travel needs.  By 2020, Freiburg is projected to have 29\% of travelers using private vehicles, 20\% using public transit, 27\% cyclists, and 24\% pedestrians \cite{Rydningen2017OsloCentre}. By reducing the stress on any one form of transportation, it should contribute to a well-balanced city-wide network for 
+all users. Figure \ref{img:freiburg_modal_split} reflects the current and projected usage of the transportation network in Freiburg.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale=0.75]{freiburg_modal_split.png}
+    \includegraphics[width=10cm]{images/freiburg_modal_split.png}
     \caption{Chart of Freiburg's transportation modal split over time.}
     \label{img:freiburg_modal_split}
 \end{figure}
 
-\subsection{Barcelona, Spain}[Author?]
-Barcelona is the second largest city in Spain with 1.7 million residents, and it is considered to be one of the most densely populated european cities. It a popular tourist destination in Europe, and it sees about 8.2 million international visitors per year. Barcelona is widely recognized for its smart city initiatives, and has successfully implemented various smart city technologies. For example, there are sensors around the city that measure air quality as well as others that allow for street lights to be dimmed when there are no pedestrians in the area. Sensors were installed in public parks in order to decrease unnecessary water usage. Parking availability data is also collected through sensors and its displayed in a smart parking app that also allows for online payment. The city boasts a smart bus system with increased routes and with smart bus stops that include free wifi, charging stations and real life time updates of the bus schedule. It has an extensive bike-sharing program with about 180 km of bicycle lane. The city has a metro system that is 1.5 km per hour faster than the average car trip within the city. It will be implementing a ban on older vehicles, cars made before 1997 and trucks and vans made before 1994, in order to decrease air pollution in the city. Additionally, Barcelona is now implementing a plan to establish "Superblocks" through out the city. These are areas that encompass about nine blocks and prioritize pedestrians. Cars can circulate within the superblocks, but they have to do so at slow speeds, which will ideally lead to cars staying mostly within main roads. Overall, the super blocks aim to foster communities and increase life quality. Figure \ref{img:barcelona_superblock} shows a comparison of the current city layout and the proposed layout structure of superblock.
+\subsubsection{Barcelona, Spain}[V.K.]
+Barcelona is the second largest city in Spain with 1.7 million residents, and it is considered to be one of the most densely populated European cities \cite{Bausells2016SuperblocksResidents}. It a popular tourist destination in Europe, and it sees about 8.2 million international visitors per year \cite{Bausells2016SuperblocksResidents}. Barcelona is widely recognized for its smart city initiatives, and has successfully implemented various smart city technologies. For example, there are sensors around the city that measure air quality as well as others that allow for street lights to be dimmed when there are no pedestrians in the area. Sensors were installed in public parks in order to decrease unnecessary water usage. Parking availability data is also collected through sensors and its displayed in a smart parking app that also allows for online payment. The city boasts a smart bus system with increased routes and with smart bus stops that include free WiFi, charging stations and real life time updates of the bus schedule. It has an extensive bike-sharing program with about 180 km of bicycle lane. The city has a metro system that is 1.5 km per hour faster than the average car trip within the city \cite{Bausells2016SuperblocksResidents}. It will be implementing a ban on older vehicles, cars made before 1997 and trucks and vans made before 1994, in order to decrease air pollution in the city. Additionally, Barcelona is now implementing a plan to establish "Superblocks" through out the city. These are areas that encompass about nine blocks and prioritize pedestrians. Cars can circulate within the superblocks, but they have to do so at slow speeds, which will ideally lead to cars staying mostly within main roads. Overall, the super blocks aim to foster communities and increase life quality. Figure \ref{img:barcelona_superblock} shows a comparison of the current city layout and the proposed layout structure of superblock.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale=4.5]{barcelona_superblock.jpg}
+    \includegraphics[scale=4.5]{images/barcelona_superblock.jpg}
     \caption{Diagram of Barcelona's "superblocks"}
     \label{img:barcelona_superblock}
 \end{figure}
 
-\subsection{Kansas City, United States}[Author?]
-The Smart City Challenge asked mid-sized cities across the United States to provide a plan for moving to a brand-new transportation system that “would use data, applications, and technology to help people and goods move more quickly, cheaply, and efficiently" (*). Kansas City, Missouri had realistic objectives to create a higher quality of life, reduce traffic, and interconnect the city through smart technologies. Kansas City’s existing infrastructure was one of it’s most valuable assets, having the most highway miles in the region and the most established infrastructure of Fiber Optics and WiFi in the country at the time of the challenge. These resources eliminated the need for significant overhead and resources to build a network from scratch, which many other cities required. The city at the time was also emphasizing the use of bikes by implementing road diets and including a wayfinding app for bikers called RideKC. Though this was a start, Kansas City had 3 different plans laid out in their Smart City + Connected City proposal. Their plan entailed making improvements to underdeveloped areas in the East Side, introducing autonomous and connected vehicle technologies, as well as increasing connectivity sharing throughout the city. To address the East Side, they added a 3.5 km tram line which allowed easier transport the Center and East Side. They also added new wayfinding apps for pedestrians, and planned to increase their offerings for ride-sharing, bike-sharing, and city-wide wifi. In addition they began pilot tests for autonomous vehicles in a main artery within the city to test the viability of it expanding. These vehicles will also be connected to events, traffic, and could be implemented slowly while the infrastructure and policy-making develops. The city also plans to partner with ridesharing companies to obtain important real-time data, further expand the WiFi network to gather user data, and install information kiosks for travelers.
+\subsubsection{Kansas City, United States}[Z.Z.]
+The Smart City Challenge asked mid-sized cities across the United States to provide a plan for moving to a brand-new transportation system that “would use data, applications, and technology to help people and goods move more quickly, cheaply, and efficiently" \cite{2016BeyondChallengeb}. Kansas City, Missouri had realistic objectives to create a higher quality of life, reduce traffic, and interconnect the city through smart technologies. Kansas City's existing infrastructure was one of it's most valuable assets, having the most highway miles in the region and the most established infrastructure of Fiber Optics and WiFi in the country at the time of the challenge \cite{2016BeyondChallengeb}. These resources eliminated the need for significant overhead and resources to build a network from scratch, which many other cities required. The city at the time was also emphasizing the use of bikes by implementing road diets and including a wayfinding app for bikers called RideKC \cite{2016BeyondChallengeb}. Though this was a start, Kansas City had 3 different plans laid out in their Smart City + Connected City proposal. Their plan entailed making improvements to underdeveloped areas in the East Side, introducing autonomous and connected vehicle technologies, as well as increasing connectivity sharing throughout the city. To address the East Side, they added a 3.5 km tram line which allowed easier transport the Center and East Side \cite{2016BeyondChallengeb}. They also added new wayfinding apps for pedestrians, and planned to increase their offerings for ride-sharing, bike-sharing, and city-wide WiFi. In addition they began pilot tests for autonomous vehicles in a main artery within the city to test the viability of it expanding \cite{2016BeyondChallengeb}. These vehicles will also be connected to events, traffic, and could be implemented slowly while the infrastructure and policy-making develops. The city also plans to partner with ridesharing companies to obtain important real-time data, further expand the WiFi network to gather user data, and install information kiosks for travelers \cite{2016BeyondChallengeb}.
 
-\subsection{Singapore}
-The city-state of Singapore is one with a large population density, at nearly 8000 people per square kilometer. This issue is only expected to compound over time, with an estimated population of 6.9 million by the year 2030. However, the city believes it can be proactive in providing a livable city by using its largely technology-based economy and infrastructure to its advantage. Firstly, the city intends to make itself more pedestrian and biker-friendly by providing more bike lanes and pedestrian mobility services. Using autonomous cars, the city hopes to employ Mobility as a Service (MaaS) and reduce the amount of private vehicles on the road. Though autonomous cars can be difficult to test in a place with such a significant population density, it would alleviate major congestion areas and most likely reduce accidents, commute times, and allow for vehicle-to-vehicle (V2V) communications. Data gathered from these autonomous vehicles, cameras, sensors, and people on the city-wide network should be analyzed and redistributed to vehicles and travelers to adjust to real-time issues within the city. This system would save people money, time, and would make it easier for users to pay. Since vehicles take up 12\% of the city’s area, we can assume that constantly moving autonomous cars would significantly increase the amount of available city land previously held by parked private vehicles. Though Singapore has lofty goals, they hope to achieve full autonomous fleets in the next 10-15 years.
+\subsubsection{Singapore}[Z.Z.]
+The city-state of Singapore is one with a large population density, at nearly 8000 people per square kilometer. This issue is only expected to compound over time, with an estimated population of 6.9 million by the year 2030 \cite{2016SmartSingapore}. However, the city believes it can be proactive in providing a livable city by using its largely technology-based economy and infrastructure to its advantage. Firstly, the city intends to make itself more pedestrian and biker-friendly by providing more bike lanes and pedestrian mobility services. Using autonomous cars, the city hopes to employ Mobility as a Service (MaaS) and reduce the amount of private vehicles on the road \cite{Huiling2017AISingapore}. Though autonomous cars can be difficult to test in a place with such a significant population density, it would alleviate major congestion areas and most likely reduce accidents, commute times, and allow for vehicle-to-vehicle (V2V) communications. Data gathered from these autonomous vehicles, cameras, sensors, and people on the city-wide network should be analyzed and redistributed to vehicles and travelers to adjust to real-time issues within the city \cite{2016SmartSingapore}. This system would save people money, time, and would make it easier for users to pay. Since vehicles take up 12\% of the city's area, we can assume that constantly moving autonomous cars would significantly increase the amount of available city land previously held by parked private vehicles \cite{Huiling2017AISingapore}. Though Singapore has lofty goals, they hope to achieve full autonomous fleets in the next 10-15 years.
 
-\subsection{Columbus, United States}
-In 2015 Columbus, Ohio won the Smart City Challenge created by the U.S. Department of Transportation (DOT), which resulted in a \$50 million grant given to fund the city’s plans to create a smart transportation system. Additionally, it raised over \$500 million to support its smart city journey mostly by the city’s private sector. The collaboration between the public and private sectors has been crucial in Columbus' success in implementing its plan to transition into a smart city. It has installed sensors throughout the city that work to allow integrated data exchange (IDE) in order to decrease congestion and  have transportation be as smooth as possible. For example, this lets emergency vehicles to interact with traffic lights to decrease travel time. Columbus aims to convert to EVs and wants to decarbonize the city’s electric grid. It is also testing autonomous vehicles. It created a playbook in order to share project, case studies and strategies with other cities looking to implements smart city technologies.
+\subsubsection{Columbus, United States}[V.K.]
+In 2015 Columbus, Ohio won the Smart City Challenge created by the U.S. Department of Transportation (DOT), which resulted in a \$50 million grant given to fund the city's plans to create a smart transportation system \cite{2016ColumbusChallenge}. Additionally, it raised over \$500 million to support its smart city journey mostly by the city's private sector. The collaboration between the public and private sectors has been crucial in Columbus' success in implementing its plan to transition into a smart city. It has installed sensors throughout the city that work to allow integrated data exchange (IDE) in order to decrease congestion and  have transportation be as smooth as possible. For example, this lets emergency vehicles to interact with traffic lights to decrease travel time. Columbus aims to convert to EVs and wants to decarbonize the city's electric grid. It is also testing autonomous vehicles. It created a playbook in order to share project, case studies and strategies with other cities looking to implements smart city technologies.
 
-\subsection{Summary}[Author?]
-\begin{table}[h]
+\newpage
+\subsubsection{Table of cities}[V.K., Z.Z.]
+\begin{table}[H]
     \centering
+    \singlespacing
     \small
     \begin{tabular}{ m{1.7cm} | m{1.1cm} | m{1.3cm} | m{3.4cm} | m{3.4cm} | m{3.4cm} }
         \textbf{City} & \textbf{Pop.} & \textbf{Area} & \textbf{Problem} & \textbf{Goal} & \textbf{Plan} \\
@@ -168,9 +240,9 @@ In 2015 Columbus, Ohio won the Smart City Challenge created by the U.S. Departme
         Kansas City, US &
         489K &
         826km$^2$ &
-        \begin{flushleft}Problem?\end{flushleft} &
-        \begin{flushleft}Goal?\end{flushleft} &
-        \begin{flushleft}Plan?\end{flushleft} \\
+        \begin{flushleft}Underdeveloped regions in the city, outdated/ underutilized transportation\end{flushleft} &
+        \begin{flushleft}Improve mobility and quality of life for citizens, reduce traffic, and create a smart city\end{flushleft} &
+        \begin{flushleft}Use fiber optics and WiFi to gather user data, AV/CVs to provide a ride service, information kiosks \end{flushleft} \\
         \hline{}
         
         Singapore &
@@ -184,42 +256,34 @@ In 2015 Columbus, Ohio won the Smart City Challenge created by the U.S. Departme
         Columbus, Ohio &
         879K &
         578km$^2$ &
-        \begin{flushleft}Problem?\end{flushleft} &
-        \begin{flushleft}Goal?\end{flushleft} &
-        \begin{flushleft}Plan?\end{flushleft}
+        \begin{flushleft}Worsening congestion\end{flushleft} &
+        \begin{flushleft}Improve public transportation, Convert to EVs, testing for autonomous vehicles\end{flushleft} &
+        \begin{flushleft}Partner with the private sector, Integrated Data Exchange (IDE), smart city technologies\end{flushleft}
     \end{tabular}
     \caption{Table of smart cities}
     \label{tab:smart_cities}
 \end{table}
 
-% Same as before with section headers, not sure how we should organize those
-\section{Application of Global Smart Cities to Eilat: Advantages and Disadvantages}
-These examples of cities show general trends in what solutions are being used to address similar problems. These examples range from smart city proposals and successful implementations to cities that tackled problems, such as congestion, through other solutions. Comparing these to Eilat’s characteristics is useful in understanding what could be implemented in Eilat, what constraints would be present, and how these can be adapted to Eilat. Through this scope the following advantages and disadvantages can be taken into consideration in regard to applying similar approaches to Eilat. 
+\subsection{Global Smart Cities \& Eilat: Advantages and Disadvantages}[V.K., Z.Z.]
+These examples of cities show general trends in what solutions are being used to address similar problems. These examples range from smart city proposals and successful implementations to cities that tackled problems, such as congestion, through other solutions. Comparing these to Eilat's characteristics is useful in understanding what could be implemented in Eilat, what constraints would be present, and how these can be adapted to Eilat. Through this scope the following advantages and disadvantages can be taken into consideration in regard to applying similar approaches to Eilat. 
 
-Curitiba and Freiburg both implemented a pedestrian city center, which eliminated congestion within the city center. Eilat’s city center, unlike those of these two cities, is no concentric, which means that determining what zone to pedestrianised is more complicated. The location of the Ben Gurion Airport also poses an obstacle to developing a pedestrian center; however, given that this area will be repurposed in the coming years this is only a temporary constraint. An alternative to this is to extend the existing boardwalk along the water. This also helps address the extreme heat during the summer months. The sea provides a chilling factor that will encourage people wanting to walk outside, whereas an otherwise pedestrian city center might not be as effective as it has been in other cities with milder climates. Most of the cities that were studied made a conscious effort to promote cyclists by having bike sharing programs. Road diets do this by reducing the size of the roadways prioritize room for bike paths and pedestrian walkways. The mayor of Eilat (look for source) aims to promote a healthier and more athletic lifestyle for Eilat’s residents. Adjusting infrastructure in the city and offering services to promote walking and cycling is in the city’s best interest to accomplish this and decrease congestion. Once again, Israel’s climate must be taken into account and providing more shade throughout the city would further help address this issue. 
+Curitiba and Freiburg both implemented a pedestrian city center, which eliminated congestion within the city center. Eilat's city center, unlike those of these two cities, is not concentric, which means that determining what zone to pedestrianized is more complicated. The location of the Ben Gurion Airport also poses an obstacle to developing a pedestrian center; however, given that this area will be re purposed in the coming years this is only a temporary constraint. An alternative to this is to extend the existing boardwalk along the water. This also helps address the extreme heat during the summer months. The sea provides a chilling factor that will encourage people wanting to walk outside, whereas an otherwise pedestrian city center might not be as effective as it has been in other cities with milder climates. Most of the cities that were studied made a conscious effort to promote cyclists by having bike sharing programs. Road diets do this by reducing the size of the roadways prioritize room for bike paths and pedestrian walkways. The mayor of Eilat (look for source) aims to promote a healthier and more athletic lifestyle for Eilat's residents. Adjusting infrastructure in the city and offering services to promote walking and cycling is in the city's best interest to accomplish this and decrease congestion. Once again, Israel's climate must be taken into account and providing more shade throughout the city would further help address this issue. 
 
 Investing in the improvement of public transportation has been incredibly beneficial to multiple cities such as Curitiba, Freiburg and Barcelona. Having bus/train/metro stops placed throughout the city so that citizens do not have a long transition from wherever they are located to the nearest bus stop has been key. Making sure waiting times are short is also important. Both of these factors motivate people to use public transportation instead of finding a different mode a transportation, and keeping the travel distances and waiting times short is especially important in Eilat due to the summer heat. 
 
-Barcelona’s superblocks plan is aimed at a much larger city with a higher population density and higher pollution levels. This means that in order to implement it to a smaller city such as Eilat it would need to adapt to a much smaller scale. Perhaps a more practical approach would be to take specific characteristics of the superblock model and incorporate these into Eilat. Barcelona chose to gradually repurpose existing infrastructure to establish the superblocks instead majorly restructuring, which provides a smoother transition for residents.
+Barcelona's superblocks plan is aimed at a much larger city with a higher population density and higher pollution levels. This means that in order to implement it to a smaller city such as Eilat it would need to adapt to a much smaller scale. Perhaps a more practical approach would be to take specific characteristics of the superblock model and incorporate these into Eilat. Barcelona chose to gradually repurpose existing infrastructure to establish the superblocks instead majorly restructuring, which provides a smoother transition for residents.
 
-%%% Not touched because it's unfinished
-    ***pros and cons for singapore
--Pilot autonomous taxi fleets
--Collect and analyze real-time data using existing/future infrastructure
--Provide ease-of-use which will be unrivaled by personal vehicles
+Singapore is an example of a city which strategically tackled its issues with its strengths in mind. Though the technology needs to develop, the city has a conducive environment for testing new technologies, both because of policy makers and residents being progressive, and significant infrastructure already exists. Relating this to Eilat, it is clear that a target of implementing autonomous vehicles in the next 10 years is impractical given the lack of infrastructure. This being said, it should be noted that nearly every smart city has required cameras and sensors, an extensive WiFi network to gather valuable real-time information, and accessible resources for travelers to explore, book, and pay for transportation. This would be step 1 for Eilat in moving toward a technologically-oriented smart city that adapts to the unique needs of its citizens as well as its many tourists. It can be said that Singapore suffers from fundamentally issues than Eilat and has a largely different geographical situation (climate, topography, regional location); however, Eilat does suffer from major population density at times of peak tourist season load. Additionally, it is important to see the way other cities such as Singapore address their problems from the perspective of their approach, process, and ultimate resolution.
 
-Cities that have struggled with congestion
+\subsection{Cities that continue to struggle with congestion}[V.K.]
+London, England and San Francisco, California are both large cities with high population densities and high levels of congestion. There have been attempts to addressed congestion without overall successful results. 
 
-London, England
+London implemented a policy on a congestion charge in the city center 15 years ago. This initially resulted in a big drop in congestion  in the area of about 25\% \cite{Badstuber2018LondonIt}; however,  this strategy is experiencing a plateau. Congestion in the city center has increased again, with long travel times, and high usage of private vehicles. There are several factors that have contributed to the increasingly high use of private vehicles such as the fact that the bus system is considerably slow; therefore, most people do not use it. Additionally, delivery services and private vehicles for hire are unregulated and largely contribute to the cars that circulate within the city center. Some believe that bicycle lanes simply slow down cars and are not contributing to improving the situation. London is currently looking to change the congestion charge from a flat fee to a charge based on when and where drivers enter the charge zone and for how long they stay in it. They are also planning on expanding the zone. There is also consideration about implementing a hierarchical structure for car prioritization within the city center, such that emergency vehicles would be given top priority. 
 
-San Francisco, California, USA
+Between 2010 and 2016 San Francisco's population increased by 70,000 people and 150,000 new jobs were created \cite{Marshall2018UberComplicated}. This led to a rapid increase in congestion, with 30\% of it being attributed to parking \cite{Marshall2018UberComplicated}. Private vehicles for hire, such as Uber and Lyft, as well as service delivery are being blamed for making existing congestion worse. The city continues to struggle with this congestion despite 32\% of its residents using public transpiration \cite{Marshall2018UberComplicated}. 
 
-%%% End unfinished stuff?
-
-
-
-\section{Smart City Tools}
-\subsection{Sensors}[Author?]
+\subsection{Smart City Tools}
+\subsubsection{Sensors}[V.K., Z.Z.]
 A key component of smart cities are interconnected technologies that rely on sensors that collect data. This data is analyzed in real time and allows for immediate changes that result in improvements. The following lists the most common and useful sensor-based technologies found in smart cities world wide. 
 
 \paragraph{Parking sensors} These are used to indicate available parking through and app that can also be used to pay for parking digitally.
@@ -241,7 +305,7 @@ Emergency vehicles: A system can allow emergency vehicles to interact with traff
 
 \paragraph{DRSC enabled vehicles} Dedicated short-range communication vehicles for either single or bidirectional connections with infrastructure and other vehicles from ranges of around 1 km. It was created for vehicles to increase driver safety and those surrounding the vehicle.
 
-\subsection{Services}[Author?]
+\subsubsection{Services}[V.K., Z.Z.]
 \paragraph{Shuttles/Bridj} Convenient method of strategically transporting people from point A to point B in mass without the hassle of a bus, train or subway system. It is used as a ridesharing service in some cities and can provide convenience to disabled and elderly users.
 
 \paragraph{Ride-sharing} Transportation network companies (TNCs), such as Uber and Lyft, aim to provide on-demand transportation at a cost that is congruent to the ratio between consumer demand and the supply of drivers. The cost should also be agreed upon in advance.
@@ -257,7 +321,7 @@ Emergency vehicles: A system can allow emergency vehicles to interact with traff
 \paragraph{Bus system} The most ubiquitous public mode of transportation in cities without an underground rail system
 Wayfinding apps for pedestrians/bikers: Provided by public and private companies to encourage the use of sustainable transportation options
 
-\paragraph{SkyTran} An above-ground rail system which transports users in pods that fit two at speeds of up to 300 km/hr to their destination. Though it hasn’t been implemented, it is being developed in Tel-Aviv currently.
+\paragraph{SkyTran} An above-ground rail system which transports users in pods that fit two at speeds of up to 300 km/hr to their destination. Though it hasn't been implemented, it is being developed in Tel-Aviv currently.
 
 \paragraph{Autonomous Vehicles/Connected Vehicle Fleets} These have been piloted at level 4 autonomy (not full autonomy) in multiple cities to create interconnected taxi fleets which can simultaneously collect data for the city and communicate vehicle-to-vehicle (V2V).
 
@@ -271,7 +335,7 @@ Wayfinding apps for pedestrians/bikers: Provided by public and private companies
 
 \paragraph{Paying online for public transportation}: Certain transportation networks have produced easy to use app/web interfaces in which travelers can purchase tickets across various modes of transportation.
 
-\subsection{Policies}[Author?]
+\subsubsection{Policies}[V.K.]
 An important aspect of decreasing congestion and improving citizen quality of life is implementing policy changes. There are various city policies that have been designed specifically for this purpose, which can be taken as a basis. 
 
 \paragraph{Congestion pricing} There is an imposed fee for entering a zone, typically the city center or the most congested area in the city. Some cities implement a fixed fee, while others have a fee that reflect the current congestion, when/where a vehicle is entering the zone and how long it is staying in it.
@@ -290,14 +354,13 @@ An important aspect of decreasing congestion and improving citizen quality of li
 
 \paragraph{Superblocks} Areas of about nine blocks that prioritize pedestrians with limited vehicle circulation. They aim to foster communities and increase life quality.
 
-\subsection{Additional Technologies}[Author?]
+\subsection{Additional Technologies}[V.K., Z.Z.]
 \paragraph{Charging stations for electric vehicles (EVs)} Installing EV charging stations throughout the city to promote EV usage.
 
 \paragraph{V2X communications} Combines V2V and vehicle-to-infrastructure (V2I) technology to become vehicle-to-everything, in which the vehicle communicates with all enabled devices within range.
 
-% Organization?
-\section{Goals for Eilat}
-Based on the data gathered and analyzed regarding Eilat’s current situation, the determined problems and influencing factors, as well as the models and goals proposed by example cities the following goals would be good guidelines for Eilat for 2040:
+\subsection{Goals for Eilat}[V.K., Z.Z.]
+Based on the data gathered and analyzed regarding Eilat's current situation, the determined problems and influencing factors, as well as the models and goals proposed by example cities the following goals would be good guidelines for Eilat for 2040:
 
 \begin{enumerate}
     \item Transportation availability
@@ -317,6 +380,98 @@ Based on the data gathered and analyzed regarding Eilat’s current situation, t
     \end{enumerate}
 \end{enumerate}
 
+% Organization? Not sure this should be its own section
+\newpage
+\section{Interactive Map Website}
+\subsection{Overview}[C.M.]
+
+To gain a better understanding of transportation within the city, we created an interactive mapping \& general transportation information site. The site is not intended to be used by Eilat citizens or tourists, and in fact has no data that would be useful to them (such as location of bus stops or assistance finding directions). Instead the site contains information on Eilat traffic patterns, location of buses and their stops, city zoning information, and data on flight arrivals to the three airports that service Eilat. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/site_map.png}
+    \caption{Website default map view}
+    \label{img:site_map}
+\end{figure}
+
+Figure \ref{img:site_map} shows the website when it first loads and the default map view, as generated by Google Maps. The left and right columns explain the purpose of the map and any features that might be visible. Four map view modes are available: traditional roadmap view, terrain view (for understanding the effect of geography on the city), satellite imagery view, and schematic view.
+
+\newpage %TODO: REMOVE \newpages AS NEEDED
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/site_map_schematic.png}
+    \caption{Map schematic view with bus location markers} 
+    \label{img:site_map_schematic}
+\end{figure}
+
+The "schematic view" in figure \ref{img:site_map_schematic} can be used to highlight road size using color; bright yellow lines indicate highways, darker lines are major cities arteries, and the darkest are for local roads. Any number of data overlays can be applied to a map type, such as bus location markers.
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/site_map_traffic.png}
+    \caption{Map view with traffic and bus location markers}
+    \label{img:site_map_traffic}
+\end{figure}
+
+The view in figure \ref{img:site_map_traffic} shows live traffic data alongside locations of buses within the city (\textit{note: this image was taken on a Friday night as services in Israel begin to shut down, so there is only one bus in the city}), which can aid city planners both in understanding where traffic hotspots lie and in understanding how buses interact with traffic. Typically there are 10-12 buses in the city at any given time, many of them clustered together or spending long periods in areas of heavy traffic.
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images/site_flights.png}
+    \caption{Website flights page}
+    \label{img:site_flights}
+\end{figure}
+
+Figure \ref{img:site_flights} shows the flight data page, built using data on when flights arrive in Ramon, Eilat, and Ovda airports, despite that the latter two are scheduled to effectively shut down as Ramon takes over for air traffic in the region. The chart on the the top right shows a table of the last 250 flights into the region (useful to understand where tourists are coming from), while the histogram on the bottom left (figure \ref{img:site_flights_histograpm}) shows flight arrival times. The table can be sorted by any of its headers, allowing users to quickly search for arrival times, airlines, departure locations, and so on.
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=13cm]{images/site_flights_graph.png}
+    \caption{Flight arrivals histogram}
+    \label{img:site_flights_histograpm}
+\end{figure}
+
+The histogram is a fully interactive chart designed to show when flights are most likely to arrive. The higher the bar on the chart, the more flights that have landed in the Eilat region at that time in the past, and thus the more likely it is that flights will land at that time in the future. Since airport traffic may vary by days, checkboxes can be used to select display of data for only certain days. These can easily be toggled in groups using the "weekdays" and "weekends" buttons, which are included since traffic on weekends is most likely different than traffic on weekdays.
+
+% This part *probably* isn't needed, but what the hell. Someone feel free to delete it if you want.r
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=13cm]{images/site_about.png}
+    \caption{Website acknowledgments page}
+    \label{img:site_about}
+\end{figure}
+
+Finally, figure \ref{img:site_about} shows the site's acknowledgments page, which thanks WPI and our sponsors for their time and assistance.
+
+\subsection{Implementation Details}[C.M.]
+The website is structured into two components: the front-end website itself, visible by the user, and the data server responsible for processing data and sending it to users of the site for display. The source code for the site is freely available \underline{\href{https://github.com/c7c8/Eilat-Transport-Map-Site}{here}} and the server code is freely available \underline{\href{https://github.com/c7c8/Eilat-Transport-Map-Server}{here}}. Both are designed to operate reasonably independently from each other: the site doesn't care where it gets data from, and the data server will provide data to anything that asks.
+
+\subsubsection{Website}[C.M.]
+The website is built using the Angular 7 framework to manage data, user interaction, and rendering of the site. Each page is built as its own module, operating independently from the others, making the site much easier to understand and expand, should a future IQP continue development of it. The website uses Angular Material, a library of user interface elements and styles aimed at implementing Google's "Material" design language \cite{2019AngularMaterial}. As a result the site is easy to use, touch-friendly, and incorporates design elements and behaviors that should be familiar to most users.
+
+The mapping portion of the website is built on top of the Google Maps API, an API provided as part of the Google Cloud Platform. The API allows display and styling of maps as provided by Google, geocoding addresses to coordinates (this is how the "search" feature is implemented), and much more beyond a traditional mapping service. In particular the service allows for the display of overlays and arbitrary datapoints; this is how the traffic overlay is implemented, or how the map is able to display markers to indicate the location of buses within the city. Unfortunately this service is not without cost. The map is unable to display \textit{historical} traffic data as Google simply does not supply it, and it is limited to a free trial period of one year, and requires an API key to function. API keys can be generated using the Google Cloud Platform console and given the extremely low expected traffic to the site will not incur any cost, but must be provided by the sponsor in the event they make a clone of the website.
+
+The website is fully configurable and can be made to source data from any server. That is, although the website as deployed currently is set up to source data from our server, it can just as easily be pointed at a clone of the server running anywhere. This makes it trivial for the sponsor to set up a duplicates of the site as they see fit.
+
+\subsubsection{Data server}[E.G., C.M.]
+The data server was written in Python 3 using the Flask server microframework, both chosen for rapid development, minimal up-front requirements, and light footprint. The server provides a small API to request data on three things: the most recent 250 flights landing near Eilat, a data analysis on when those flights land, and the locations of all buses within the city.
+
+Flight data is provided by the \underline{\href{https://www.flightstats.com/v2/}{FlightStats API}} from FlightGlobal, which allows a lookup of all flights arriving at an airport over a period of six hours in only one API request. Just as the Google Maps API requires a key, so does the FlightStats API, but in a more limited sense. This server has been built on top of a trial account that limits the user to 1,000 requests per month, after which requests must be paid for. Consequently the server is set up to retrieve flight data once every 6 hours exactly, and store it in a MySQL database for later analysis and delivery to the website on demand. When the trial 1,000 requests run out, the server will no longer be able to retrieve new data with the same key but will still be able to serve saved data. Similar to the website, the server is also fully configurable and can be set to use any API key and MySQL database.
+
+To analyze data on when flights arrive, the server performs a simple by-hour summation, counting all flights that land at 12 AM on a given day, then 1 AM, and repeating until there are no more flights left. This data forms a 7x24 matrix (7 days per week, 24 hours per day) that is sent of the site, which is capable of displaying it on a histogram with little to no further data processing.
+
+The data server retrieves public transportation information from two sources: the Service Interface for Real-time Information (SIRI) API (specifically the SIRI Stop Monitoring (SM) service) and General Transit Feed Specification (GTFS); both are provided by Israel's Ministry of Transportation (MoT). SIRI SM provides real-time information on bus stops, the estimated arrival times of buses at that stop during a given timeframe, and the current location of those buses. GTFS provides static information on public transportation, including bus stop information, scheduled stop times, and bus companies. We store the GTFS information in the MySQL database, and retrieve the bus stops in Eilat by filtering by longitude and latitude. The ID numbers of the bus stops are then referenced in a SIRI SM request. From the SIRI response we get the location of all buses currently in Eilat.
+
+
+\subsubsection{Deployment}
+% Evan: talk about how we're deploying the server and how easy to replicate it'll be for the sponsor. Try to keep it simple and strictly relevant details only?
+
+
+\subsection{Website Data Analysis}
+% Stuff about what conclusions we can draw from the website
 
 % Bibliography -- automatically managed in APA style, on a new page
 \newpage
