@@ -11,6 +11,7 @@
 \RequirePackage{morewrites}
 \RequirePackage{etoolbox}
 \RequirePackage{bookmark}
+\RequirePackage{caption}
 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}  % For quickly changing the column type if needed
 
@@ -33,7 +34,7 @@
 \AtBeginDocument{%
   \IfFileExists{\jobname.atl}{}{%
   \immediate\openout\authorfile=\jobname.atl%
-  \immediate\write\authorfile{%
+  \immediate\write\authorfile{
     \string\begin{longtable}{r@{}l@{}l@{}L{\contentcellwidth} L{\authorcellwidth}}%
        \string & \string\textbf{Section} & & & \unexpanded{\bfseries \AuthorHeaderName} \tabularnewline%
       \string\endhead%
@@ -57,7 +58,8 @@
 
 \AtEndDocument{%
   \immediate\write\authorfile{%  Close the table
-    \string\end{longtable}%
+    \string\end{longtable}
+    \string\captionsetup{list=yes}
 }% 
   \immediate\closeout\authorfile% Close the file
 }%
