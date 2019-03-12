@@ -45,14 +45,14 @@
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ \scshape#1}}
 \fancyhead[L]{\raisebox{-2pt}{\truncate{.4\headwidth}{\footnotesize\rightmark}}}
 \fancyhead[C]{\raisebox{-5pt}{\centering\includegraphics[width=12pt]{images/city.png}}}
-\fancyhead[R]{\raisebox{-2pt}{\footnotesize\textit{Eilat: Transportation 2040}}}
+\fancyfoot[L]{\raisebox{-2pt}{\footnotesize\textit{Investigating Eilat Transportation \& Smart City Options}}}
 \fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{1.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 \setlength{\headheight}{15.5pt}
 
 % Set up document title info
-\title{\scshape Eilat: Transportation 2040}
+\title{\scshape Investigating Eilat Transportation \& Smart City Options}
 \author{Evan Goldstein, Valeria Kopper, Christopher Myers, Zachary Zlotnick}
 \date{\today}
 
@@ -66,7 +66,7 @@
 \begin{center}
     \includegraphics[width=1\textwidth]{images/eilat.jpg}
 \end{center}
-\vspace{1cm}
+\vspace{0.5cm}
 
 \begin{minipage}{0.45\textwidth}
     % Eilat logo & sponsor stuff
@@ -81,7 +81,7 @@
 \begin{minipage}{0.45\textwidth}
     % WPI logo and advisor stuff
     \begin{flushright} \large
-        \includegraphics[width=5.5cm]{images/WPI_logo.png} \\
+        \href{https://www.wpi.edu}{\includegraphics[width=5.5cm]{images/WPI_logo.png}} \\
         \vspace{1.0cm}
         \textbf{Submitted to:}\\
         Professor Isa Bar-On
@@ -93,7 +93,9 @@
 % Begin preamble section of document; abstract is first
 \pagenumbering{roman}
 \begin{abstract}
-    Eilat is a city in southern Israel with a population of \textapprox50,000, but over 3 million tourists per year. The city suffers from severe congestion during commuting hours, with traffic jams along major city roads and backed up lines of cars waiting to enter the city by the highway in the north. This project aimed to aid Eilat city planners in its goal to improve its transportation service offerings while minimzing environmental impact, and investigate smart city technologies to reduce congestion. Extensive research on smart cities was conducted, including case studies of other cities, listings of smart city tools, and their applications to Eilat. To further aid city planners in visualizing data, an extensible interactive website was created that displays mapping information and data on flights entering the region. Suggestions for services and citywide goals were developed to guide Eilat towards reducing congestion and becoming a smart city.
+    % Eilat is a city in southern Israel with a population of \textapprox50,000, but over 3 million tourists per year. The city suffers from severe congestion during commuting hours, with traffic jams along major city roads and backed up lines of cars waiting to enter the city by the highway in the north. This project aimed to aid Eilat city planners in their goal to improve Eilat transportation service offerings while minimizing environmental impact, and to investigate smart city technologies to reduce congestion. Research on smart cities was conducted, including case studies of other cities, listings of smart city tools, and their applications to Eilat. To further aid city planners in visualizing data, an extensible interactive website was created that displays mapping information and data on flights entering the region. Suggestions for services and citywide goals were developed to guide Eilat towards reducing congestion and becoming a smart city.
+    
+    Eilat is a city in southern Israel with a population of \textapprox50,000, \textapprox3 million tourists/year, and severe congestion. This project aimed to aid city planners in improving transportation services, minimizing environmental impact, and investigating smart city technologies. Smart cities research was conducted, including case studies, listings of technologies, and relevant analyses. An interactive website was created for planners, displaying transport and regional flight information. Suggestions for services and citywide goals were developed to reduce congestion and further smart city goals.
 \end{abstract}
 \newpage
 
@@ -239,14 +241,14 @@ The tourism monthly distribution is closely correlated to the monthly population
 Though Eilat's population density is nominally at 600 ppl/km$^2$, the 3 million tourists per year play a major role in fluctuating it throughout the year. As seen above, the actual population density at any given time in a month is above 800 ppl/km, a 25\% increase. To calculate this, the percent split in tourist population by month (all summing to 100) was used to extrapolate how many tourists out of 3 million would come during each month. From here the length of the given month was divided by average length of stay in Eilat, 4.25 days, to obtain the average population density at any given point in a certain month \cite{IsraelMinistryofTourism2017}. All of these calculations were done in addition to the residents that are assumed to be constant (at 50,000) throughout the year. Sources of error in this lie in the assumption that these population densities are uniformly distributed throughout Eilat, when in reality they are concentrated most in tourist destinations and the center of the city. These areas would see much higher population densities, inherently causing more congestion in those areas. The issue of an ever-changing population, thus population density, is unique to Eilat in that most other cities don't experience populations with such high peaks and low troughs. Similarly to monthly tourism numbers, the variance in population density throughout the year and its correlation to congestion and increased stress on the city's resources are valid reasons to turn to smart city initiatives.
 
 \subsection{Eilat Expansion and Zoning}[Valeria K., Zachary Z.]
-Figure \ref{img:eilat_zoning} shows Eilat's current layout and how it is zoned into residential, industrial, commercial and tourist areas. 
+% Figure \ref{img:eilat_zoning} shows Eilat's current layout and how it is zoned into residential, industrial, commercial and tourist areas. 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/eilat_zoning.jpg}
-    \caption{Map of Eilat zoning}
-    \label{img:eilat_zoning}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{images/eilat_zoning.jpg}
+%     \caption{Map of Eilat zoning}
+%     \label{img:eilat_zoning}
+% \end{figure}
 
 Residential areas in Eilat are divided into seven zones. Figure \ref{img:Residential_Age_Distribution} shows the average age distribution within these. 
 
@@ -259,16 +261,16 @@ Residential areas in Eilat are divided into seven zones. Figure \ref{img:Residen
 
 This shows that the majority of Eilat's residents, accounting for 34.5\%, are between the ages 22 and 40. This is closely followed by residents between 41 and 50, at 25.4\%. The two subsets of the population make up the working demographic, given that the standard is that between ages 18 to 21 Israelis will traditionally do their military service. This means that 59.9\% of residents commute to work, presumably during similar hours in the mornings and afternoons, which coincide with peak traffic hours and worsen congestion.
 
-Figure \ref{img:eilat_expansion} shows future expansion plans for the city.
+% Figure \ref{img:eilat_expansion} shows future expansion plans for the city.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/eilat_zoning_future.png}
-    \caption{Map of future Eilat expansion \& zoning}
-    \label{img:eilat_expansion}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{images/eilat_zoning_future.png}
+%     \caption{Map of future Eilat expansion \& zoning}
+%     \label{img:eilat_expansion}
+% \end{figure}
 
-Eilat plans to expand the city significantly by adding residences, hotels, and more tourist attractions, including a golf course to the north. These additions will replace the existing airport in the city center, and currently unoccupied land toward the north and south-west. Removing the Eilat Airport will benefit the city, as the airport currently divides parts of the city and increases congestion in the Mall Hayam and Boardwalk area. This expansion would also alleviate some of the congestion that can be seen at peak airport arrival hours when taxis flood the area waiting to pick up travelers. Residents commuting to and from work during airport hours will face less traffic as a result, and services will concentrate toward the north. 
+Eilat plans to expand the city significantly to the north by adding residences, hotels, and more tourist attractions, including a golf course. These additions will replace the existing airport in the city center, and currently unoccupied land toward the north and south-west. Removing the Eilat Airport will benefit the city, as the airport currently divides parts of the city and increases congestion in the Mall Hayam and Boardwalk area. This expansion would also alleviate some of the congestion that can be seen at peak airport arrival hours when taxis flood the area waiting to pick up travelers. Residents commuting to and from work during airport hours will face less traffic as a result, and services will concentrate toward the north. 
 
 \newpage
 \section{Smart Cities}\label{sec:smart_cities}
@@ -636,7 +638,7 @@ Eilat's congestion problem is relatively focused --- although there is general c
     \label{img:bus_clump_1}
 \end{figure}
 
-Live bus data from the reveals that buses in Eilat are vulnerable to spending time in highly congested roads near the city center like the one in figure \ref{img:bus_clump_1}, significantly slowing down the route. Many bus routes travel through these high-traffic zones in the tourist-oriented parts of the city, even along smaller local roads like the one in the figure.
+Live bus data from the map reveals that buses in Eilat are vulnerable to spending time in highly congested roads near the city center like the one in figure \ref{img:bus_clump_1}, significantly slowing down the route. Many bus routes travel through these high-traffic zones in the tourist-oriented parts of the city, even along smaller local roads like the one in the figure.
 
 Buses have also been observed grouping together into one area in these high traffic zones. Good public transport should ideally be distributed throughout the city, but frequently these buses can be found in groups of 3-5 near or along highly congested roads in the center of the city. Figure \ref{img:bus_clump_1} shows 3 buses within a space of 200 meters, with more in the same general area (not shown) in the city.
 
@@ -658,7 +660,7 @@ It is important to note that this data is currently flawed: data collection is r
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images/passengers_per_year.png}
+    \includegraphics[width=0.75\textwidth]{images/passengers_per_year.png}
     \caption{Passengers per year arriving at the Eilat Airport}
     \label{img:passengers_per_year}
 \end{figure}
@@ -668,15 +670,15 @@ According to data the Israeli Airport Authority 1.4 million passengers flew into
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images/monthy_tourism_averages.png}
+    \includegraphics[width=.75\textwidth]{images/monthy_tourism_averages.png}
     \repeatcaption{img:monthly_tourism}{Monthly tourism}
 \end{figure}
 
-Eilat's tourists are mostly domestic, and typically drive or take the bus into the city rather than fly. In 2012 30\% of Israelis used buses \cite{Port2Port2012NewTransit,Petersburg2012LessTransit}; therefore, it can be estimated that 70\% of the 1.6 million tourists not arriving by plane in 2017 arrived by car. This equates to roughly 1.12 million tourists per year using cars in the city. Using monthly tourism splits (shown in figure \ref{img:monthly_tourism}) from the same year and 287 passenger cars per 1000 people, the approximate number of tourist cars in the city per day for each month was calculated (Shown in figure \ref{img:cars_per_day}). Eliminating these vehicles would result in a significant decrease in congestion.
+Eilat's tourists are mostly domestic, and typically drive or take the bus into the city rather than fly. In 2012 30\% of Israelis used buses \cite{Port2Port2012NewTransit,Petersburg2012LessTransit}; therefore, it can be estimated that 70\% of the 1.6 million tourists not arriving by plane in 2017 arrived by car. This equates to roughly 1.12 million tourists per year using cars in the city. Using monthly tourism splits (figure \ref{img:monthly_tourism}) from the same year and an average household size of 3.3 people \cite{CentralBuereauofStatistics2018IsraelNumbers}, the approximate number of tourist cars in the city per day for each month was calculated (shown in figure \ref{img:cars_per_day}). Eliminating these vehicles would result in a significant decrease in congestion.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images/cars_per_day.png}
+    \includegraphics[width=0.75\textwidth]{images/cars_per_day.png}
     \caption{Average number of tourist cars in Eilat per day for each month}
     \label{img:cars_per_day}
 \end{figure}
@@ -785,33 +787,10 @@ The goals above are intended to guide Eilat over the next 20 years and are flexi
 \newpage
 
 \begin{appendices}
-\section{Contributions}[Christopher M.]
-
-This table details contributions to various portions of the project that are not appropriately represented in the table of authorship.
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{l|l}
-        \textbf{Item} & \textbf{Contributor(s)} \\
-        \hline{}Document formatting \& curation & Christopher M \\
-        Flight data \& histogram                & Christopher M. \\
-        Implementation stages graphic           & Valeria K. \\
-        Live bus locations                      & Evan G. \\
-        Smart city case studies                 & Valeria K., Zachary Z. \\
-        Smart city tools                        & Valeria K., Zachary Z. \\
-        Website deployment                      & Evan G. \\
-        Website map \& interface                & Christopher M.
-    \end{tabular}
-\end{table}
-
-Source code for the site may be found at: \url{https://github.com/c7c8/Eilat-Transport-Map-Site}. The flight data \& bus location data server source code may be found at \url{https://github.com/c7c8/Eilat-Transport-Map-Server}. Both links (to GitHub, an online code hosting service) show an overview of who contributed to what, and by how much; Christopher M.'s contributions are under the name "\href{https://github.com/c7c8}{c7c8}", while Evan G.'s contributions are under the name "\href{https://github.com/EvanBGoldstein}{EvanBGoldstein}".
-
 \section{Implementation Stages Graphic}[Valeria K.] \label{img:stages_graphic}
 An infographic has been created to help visualize the smart city implementation stages and the recommendations presented on them, shown on the next page.
 
 \includepdf{images/stages.pdf} 
-
-
 \end{appendices}
 
 \end{document}
